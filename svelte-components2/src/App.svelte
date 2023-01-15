@@ -1,5 +1,23 @@
 <script>
     import Increment from './increment.svelte'
+    import Child from './child.svelte'
+    import {onMount, onDestroy, beforeUpdate, afterUpdate, tick} from "svelte";
+
+    onMount(async () => {
+        console.log('onMount')
+    })
+
+    onDestroy(async () => {
+        console.log('onDestroy')
+    })
+
+    beforeUpdate(async () => {
+        console.log('beforeUpdate')
+    })
+
+    afterUpdate(async () => {
+        console.log('afterUpdate')
+    })
 
     let user = {loggedIn: false}
 
@@ -131,3 +149,5 @@
 <h2>{value}</h2>
 <Increment bind:count={value} />
 
+
+<Child/>
