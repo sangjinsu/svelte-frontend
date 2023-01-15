@@ -2,6 +2,7 @@
     import Content from './content.svelte';
     import Footer from './footer.svelte';
     import Header from './header.svelte';
+    import Middle from './middle.svelte';
 
     let list = [
         {
@@ -76,6 +77,9 @@
     <div class="mousemove" on:mousemove={handleMousemove}>
         The mouse position is {m.x} x {m.y} y
     </div>
+
+    <Middle count={count} handleClick={handleClick}/>
+
     <Footer/>
 </main>
 
