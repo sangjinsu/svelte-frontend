@@ -1,30 +1,50 @@
 <script>
-	export let name;
+    import Content from './content.svelte';
+    import Footer from './footer.svelte';
+    import Header from './header.svelte';
+
+    let list = [
+        {
+            id: 0,
+            content: 'todo1',
+            done: false
+        },
+        {
+            id: 1,
+            content: 'todo2',
+            done: false
+        },
+        {
+            id: 2,
+            content: 'todo3',
+            done: false
+        }
+    ]
+
+    const handleAddTodo = () => {
+        const todo = {
+            id: list.length + 1,
+            content: `todo${list.length + 2}`,
+            done: false
+        }
+
+        list = [...list, todo]
+    }
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+    <Header/>
+    <Content/>
+
+    {#each list as item}
+        <li>
+            <p>{item.id}</p>
+            <p>{item.content}</p>
+            <p>{item.done}</p>
+        </li>
+    {/each}
+
+    <button on:click={handleAddTodo}>Add Todo</button>
+
+    <Footer/>
 </main>
-
-<style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
-
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
-</style>
