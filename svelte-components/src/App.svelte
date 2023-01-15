@@ -30,6 +30,18 @@
 
         list = [...list, todo]
     }
+
+    let count = 1
+    $: doubled = count * 2
+    $: {
+        console.log(count)
+        console.log(doubled)
+    }
+    const handleClick = () => count += 1
+
+    $: if (count >= 10){
+        count = 9
+    }
 </script>
 
 <main>
@@ -45,6 +57,10 @@
     {/each}
 
     <button on:click={handleAddTodo}>Add Todo</button>
+    <button on:click={handleClick}>
+        클릭 수 {count} {count === 1 ? 'time' : 'times'}
+    </button>
 
+    <p>{count} 두 배는 {doubled}</p>
     <Footer/>
 </main>
