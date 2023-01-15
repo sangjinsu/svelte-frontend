@@ -42,6 +42,16 @@
     $: if (count >= 10){
         count = 9
     }
+
+    let m = {
+        x : 0,
+        y : 0
+    }
+
+    const handleMousemove = (event) => {
+        m.x = event.clientX
+        m.y = event.clientY
+    }
 </script>
 
 <main>
@@ -62,5 +72,16 @@
     </button>
 
     <p>{count} 두 배는 {doubled}</p>
+
+    <div class="mousemove" on:mousemove={handleMousemove}>
+        The mouse position is {m.x} x {m.y} y
+    </div>
     <Footer/>
 </main>
+
+<style>
+     .mousemove {
+         width: 100%;
+         height: 100%;
+     }
+</style>
