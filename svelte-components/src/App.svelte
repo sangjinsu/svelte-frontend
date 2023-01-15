@@ -3,6 +3,7 @@
     import Footer from './footer.svelte';
     import Header from './header.svelte';
     import Middle from './middle.svelte';
+    import Card from './card.svelte'
 
     let list = [
         {
@@ -53,6 +54,9 @@
         m.x = event.clientX
         m.y = event.clientY
     }
+
+    let hovering = 7
+
 </script>
 
 <main>
@@ -79,6 +83,15 @@
     </div>
 
     <Middle count={count} handleClick={handleClick}/>
+
+    <Card let:hovering={hovering}>
+        <h2>안녕하세요!</h2>
+        <p>이곳은 내용이 들어가는 영역입니다.</p>
+
+        <span slot="hover">
+            {hovering}
+        </span>
+    </Card>
 
     <Footer/>
 </main>
